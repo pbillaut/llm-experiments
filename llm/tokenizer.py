@@ -3,7 +3,7 @@ from typing import TypeAlias
 
 Vocab: TypeAlias = dict[str, int]
 
-NAIVE_TOKENS = re.compile(r'''([_,.;:?!"'()]|--|\s)''')
+NAIVE_TOKENS = re.compile(r"""([_,.;:?!"'()]|--|\s)""")
 
 
 def generate_vocab(tokens: list[str]) -> Vocab:
@@ -16,7 +16,7 @@ def naive_tokenization(text: str) -> list[str]:
     return [text.strip() for text in tokens if text.strip()]
 
 
-DECODE_PATTERN = re.compile(r'''\s+([,.?!"'()])''')
+DECODE_PATTERN = re.compile(r"""\s+([,.?!"'()])""")
 
 
 class SimpleTokenizerV1:
@@ -34,5 +34,5 @@ class SimpleTokenizerV1:
 
     def decode(self, token_ids: list[int]) -> str:
         text = " ".join([self.int_to_str[i] for i in token_ids])
-        text = DECODE_PATTERN.sub(r'\1', text)
+        text = DECODE_PATTERN.sub(r"\1", text)
         return text
