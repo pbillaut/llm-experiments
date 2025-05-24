@@ -4,5 +4,5 @@ import pytest
 
 
 @pytest.fixture(scope='session')
-def resources_root() -> Path:
+def resource() -> Path:
     return Path(__file__).parent / 'resources'
