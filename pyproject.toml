@@ -1,0 +1,13 @@
+[project]
+name = "largelanguagemodel"
+version = "0.1.0"
+description = "Experimenting with LLMs"
+requires-python = ">=3.13"
+dependencies = [
+    "pytest>=8.3.5",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.401",
+]
