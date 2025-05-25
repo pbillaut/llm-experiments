@@ -1,22 +1,10 @@
-import re
-from typing import TypeAlias
-
-Vocab: TypeAlias = dict[str, int]
-
-NAIVE_TOKENS = re.compile(r"""([_,.;:?!"'()]|--|\s)""")
+from llm.tokenizer import DECODE_PATTERN, Vocab
+from llm.tokenizer.naive import naive_tokenization
 
 
 def generate_vocab(tokens: list[str]) -> Vocab:
     all_words = sorted(set(tokens))
     return {token: token_id for token_id, token in enumerate(all_words)}
-
-
-def naive_tokenization(text: str) -> list[str]:
-    tokens = NAIVE_TOKENS.split(text)
-    return [text.strip() for text in tokens if text.strip()]
-
-
-DECODE_PATTERN = re.compile(r"""\s+([,.?!"'()])""")
 
 
 class SimpleTokenizerV1:
